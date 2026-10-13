@@ -30,6 +30,14 @@
   --color-success: #10b981;
 }
 
+:root {
+  --z-sticky: 50;
+  --z-dropdown: 60;
+  --z-drawer: 100;
+  --z-modal: 110;
+  --z-toast: 120;
+}
+
 /* =========================================
    Base Typography & Smooth Scrolling
    ========================================= */
@@ -253,6 +261,11 @@ body {
 
 .input.pl-10, input.pl-10 {
   padding-left: 2.75rem !important;
+}
+
+.input.pl-12, input.pl-12,
+.input.pl-14, input.pl-14 {
+  padding-left: 3.75rem !important;
 }
 
 .input:focus {

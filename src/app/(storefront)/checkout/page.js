@@ -242,7 +242,7 @@ export default function CheckoutPage() {
                     Mobile Phone *
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-text-secondary font-medium">
+                    <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-text-secondary font-medium pointer-events-none select-none">
                       +91
                     </span>
                     <input
@@ -254,7 +254,8 @@ export default function CheckoutPage() {
                       maxLength={10}
                       value={formData.customer_phone}
                       onChange={handleChange}
-                      className={`input pl-12 ${formErrors.customer_phone ? "input-error" : ""}`}
+                      style={{ paddingLeft: "3.75rem" }}
+                      className={`input pl-14 ${formErrors.customer_phone ? "input-error" : ""}`}
                     />
                   </div>
                   {formErrors.customer_phone && (

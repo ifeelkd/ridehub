@@ -90,7 +90,7 @@ export default function SizeGuideModal({ categorySlug, isOpen, onClose }) {
   const guide = sizeGuides[key];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
       <div 
         className="relative w-full max-w-2xl bg-bg-primary rounded-2xl shadow-2xl border border-border-default overflow-hidden max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}

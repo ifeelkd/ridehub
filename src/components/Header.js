@@ -78,7 +78,7 @@ export default function Header() {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-[var(--z-sticky)] bg-bg-card/95 backdrop-blur-md transition-shadow duration-200 ${
+        className={`sticky top-0 z-50 bg-white/95 backdrop-blur-md transition-shadow duration-200 ${
           scrolled ? "shadow-md" : "border-b border-border"
         }`}
       >
@@ -260,9 +260,13 @@ export default function Header() {
           <div className="fixed inset-y-0 left-0 w-[85%] max-w-sm bg-white text-stone-900 shadow-2xl animate-in slide-in-from-left duration-300 flex flex-col z-[101]">
             {/* Drawer Header */}
             <div className="flex items-center justify-between p-4 border-b border-stone-200 bg-white">
-              <span className="heading-display text-lg tracking-wider text-stone-900">
+              <Link
+                href="/"
+                onClick={() => setMobileOpen(false)}
+                className="heading-display text-lg tracking-wider text-stone-900 no-underline"
+              >
                 {storeConfig.logoText}
-              </span>
+              </Link>
               <button
                 onClick={() => setMobileOpen(false)}
                 className="btn-icon btn-ghost"
@@ -276,6 +280,7 @@ export default function Header() {
             <nav className="flex-1 overflow-y-auto py-4" aria-label="Mobile navigation">
               <Link
                 href="/products"
+                onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-between px-6 py-3 text-base font-medium text-text-primary hover:bg-bg-secondary transition-colors"
               >
                 All Products
@@ -291,6 +296,7 @@ export default function Header() {
                 <Link
                   key={cat.slug}
                   href={`/products?category=${cat.slug}`}
+                  onClick={() => setMobileOpen(false)}
                   className="block px-6 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-secondary transition-colors"
                 >
                   {cat.name}
@@ -306,6 +312,7 @@ export default function Header() {
                 <Link
                   key={brand}
                   href={`/products?brand=${encodeURIComponent(brand)}`}
+                  onClick={() => setMobileOpen(false)}
                   className="block px-6 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-secondary transition-colors"
                 >
                   {brand}
@@ -315,18 +322,21 @@ export default function Header() {
               <div className="border-t border-border mt-4 pt-4">
                 <Link
                   href="/about"
+                  onClick={() => setMobileOpen(false)}
                   className="block px-6 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-secondary transition-colors"
                 >
                   About Us
                 </Link>
                 <Link
                   href="/contact"
+                  onClick={() => setMobileOpen(false)}
                   className="block px-6 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-secondary transition-colors"
                 >
                   Contact
                 </Link>
                 <Link
                   href="/shipping"
+                  onClick={() => setMobileOpen(false)}
                   className="block px-6 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-secondary transition-colors"
                 >
                   Shipping & Returns
@@ -339,6 +349,7 @@ export default function Header() {
               {storeConfig.contact.phone && (
                 <a
                   href={`tel:${storeConfig.contact.phone.replace(/\s/g, "")}`}
+                  onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-3 text-sm text-text-secondary hover:text-text-primary"
                 >
                   <Phone size={16} />
@@ -348,6 +359,7 @@ export default function Header() {
               {storeConfig.contact.email && (
                 <a
                   href={`mailto:${storeConfig.contact.email}`}
+                  onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-3 text-sm text-text-secondary hover:text-text-primary"
                 >
                   <Mail size={16} />

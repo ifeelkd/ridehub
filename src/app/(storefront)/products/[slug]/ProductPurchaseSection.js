@@ -20,7 +20,7 @@ import SizeGuideModal from "./SizeGuideModal";
 
 export default function ProductPurchaseSection({ product }) {
   const router = useRouter();
-  const { addItem } = useCart();
+  const { addItem, items = [] } = useCart();
 
   const {
     id,
@@ -51,6 +51,17 @@ export default function ProductPurchaseSection({ product }) {
     : stock_quantity;
 
   const isOutOfStock = currentStock <= 0;
+
+  // Check if currently selected product / variant is already in cart
+  const isInCart = items?.some((i) => {
+    if (selectedVariant) {
+      return (
+        i.variantId === selectedVariant.id ||
+        i.id === `${id}-${selectedVariant.id}`
+      );
+    }
+    return i.productId === id;
+  });
 
   // Quantity selector
   const [quantity, setQuantity] = useState(1);
@@ -251,25 +262,34 @@ export default function ProductPurchaseSection({ product }) {
             </button>
           </div>
 
-          {/* Add to Cart Button */}
-          <button
-            type="button"
-            disabled={isOutOfStock}
-            onClick={handleAddToCart}
-            className={`flex-1 h-12 btn ${
-              addedFeedback ? "btn-accent" : "btn-primary"
-            } disabled:opacity-40 disabled:cursor-not-allowed`}
-          >
-            {addedFeedback ? (
-              <span className="flex items-center gap-2">
-                <Check size={18} /> Added to Cart!
-              </span>
-            ) : (
-              <span className="flex items-center gap-2">
-                <ShoppingBag size={18} /> Add to Cart
-              </span>
-            )}
-          </button>
+          {/* Add to Cart / Go to Cart Button */}
+          {isInCart ? (
+            <Link
+              href="/cart"
+              className="flex-1 h-12 btn btn-accent text-white flex items-center justify-center gap-2 font-semibold shadow-sm no-underline"
+            >
+              <ShoppingBag size={18} /> Go to Cart &rarr;
+            </Link>
+          ) : (
+            <button
+              type="button"
+              disabled={isOutOfStock}
+              onClick={handleAddToCart}
+              className={`flex-1 h-12 btn ${
+                addedFeedback ? "btn-accent" : "btn-primary"
+              } disabled:opacity-40 disabled:cursor-not-allowed`}
+            >
+              {addedFeedback ? (
+                <span className="flex items-center gap-2">
+                  <Check size={18} /> Added to Cart!
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  <ShoppingBag size={18} /> Add to Cart
+                </span>
+              )}
+            </button>
+          )}
         </div>
 
         {/* Buy Now (Direct Checkout) */}

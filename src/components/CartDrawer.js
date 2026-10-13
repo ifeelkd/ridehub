@@ -15,17 +15,17 @@ export default function CartDrawer({ open, onClose }) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[var(--z-drawer)]">
+    <div className="fixed inset-0 z-[100]">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-bg-overlay animate-in fade-in duration-200"
+        className="fixed inset-0 bg-stone-950/60 backdrop-blur-xs animate-in fade-in duration-200 z-[100]"
         onClick={onClose}
       />
 
       {/* Drawer */}
-      <div className="absolute inset-y-0 right-0 w-full max-w-md bg-bg-card shadow-2xl animate-in slide-in-from-right duration-300 flex flex-col">
+      <div className="fixed inset-y-0 right-0 w-full max-w-md bg-white text-stone-900 shadow-2xl animate-in slide-in-from-right duration-300 flex flex-col z-[101]">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="flex items-center justify-between p-4 border-b border-stone-200 bg-white">
           <div className="flex items-center gap-2">
             <ShoppingBag size={20} />
             <h2 className="text-base font-semibold">
@@ -177,7 +177,7 @@ export default function CartDrawer({ open, onClose }) {
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="border-t border-border p-4 space-y-3">
+          <div className="border-t border-stone-200 p-4 space-y-3 bg-white">
             <div className="space-y-1.5">
               <div className="flex justify-between text-sm">
                 <span className="text-text-secondary">Subtotal</span>
