@@ -13,19 +13,21 @@ import { BRANDS, CATEGORIES } from "@/lib/catalog-data";
 async function getFilters() {
   try {
     const supabase = await getSupabaseServer();
+    if (supabase) {
+      const [{ data: brands }, { data: categories }] = await Promise.all([
+        supabase.from("brands").select("id, name, slug").eq("is_active", true).order("sort_order"),
+        supabase.from("categories").select("id, name, slug").eq("is_active", true).order("sort_order"),
+      ]);
 
-    const [{ data: brands }, { data: categories }] = await Promise.all([
-      supabase.from("brands").select("id, name, slug").eq("is_active", true).order("sort_order"),
-      supabase.from("categories").select("id, name, slug").eq("is_active", true).order("sort_order"),
-    ]);
-
-    return {
-      brands: (brands && brands.length > 0) ? brands : BRANDS,
-      categories: (categories && categories.length > 0) ? categories : CATEGORIES,
-    };
+      return {
+        brands: (brands && brands.length > 0) ? brands : BRANDS,
+        categories: (categories && categories.length > 0) ? categories : CATEGORIES,
+      };
+    }
   } catch (err) {
     return { brands: BRANDS, categories: CATEGORIES };
   }
+  return { brands: BRANDS, categories: CATEGORIES };
 }
 
 export default async function ProductsPage({ searchParams }) {

@@ -6,6 +6,10 @@ import { cookies } from "next/headers";
  * Uses the anon key with cookie-based auth.
  */
 export async function getSupabaseServer() {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return null;
+  }
+
   const cookieStore = await cookies();
 
   return createServerClient(
@@ -35,6 +39,10 @@ export async function getSupabaseServer() {
  * Uses the service-role key — NEVER expose to the browser.
  */
 export function getSupabaseAdmin() {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    return null;
+  }
+
   const { createClient } = require("@supabase/supabase-js");
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,

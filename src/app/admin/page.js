@@ -15,6 +15,7 @@ import {
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 import { formatPrice } from "@/lib/store-config";
 import { PRODUCTS } from "@/lib/catalog-data";
+import { getStoredOrders } from "@/lib/order-store";
 
 async function getDashboardData() {
   let orders = [];
@@ -30,7 +31,7 @@ async function getDashboardData() {
         .order("created_at", { ascending: false })
         .limit(20);
 
-      if (dbOrders) orders = dbOrders;
+      if (dbOrders && dbOrders.length > 0) orders = dbOrders;
 
       // 2. Fetch Low Stock Variants (< 5)
       const { data: dbVariants } = await supabase
@@ -61,43 +62,9 @@ async function getDashboardData() {
     // fallback below
   }
 
-  // Fallback demo/initial data if empty
+  // Load from unified local order store if empty
   if (orders.length === 0) {
-    orders = [
-      {
-        id: "demo-1",
-        order_number: "RH-2026-8812",
-        customer_name: "Bikash Kalita",
-        customer_phone: "9864012345",
-        city: "Bongaigaon",
-        total: 12999,
-        order_status: "confirmed",
-        payment_status: "unpaid",
-        created_at: "2026-01-14T10:30:00.000Z",
-      },
-      {
-        id: "demo-2",
-        order_number: "RH-2026-7491",
-        customer_name: "Amitava Das",
-        customer_phone: "9435098765",
-        city: "Guwahati",
-        total: 7999,
-        order_status: "shipped",
-        payment_status: "unpaid",
-        created_at: "2026-01-13T15:20:00.000Z",
-      },
-      {
-        id: "demo-3",
-        order_number: "RH-2026-6102",
-        customer_name: "Rupam Barman",
-        customer_phone: "9706123987",
-        city: "Kokrajhar",
-        total: 4499,
-        order_status: "delivered",
-        payment_status: "paid",
-        created_at: "2026-01-11T12:00:00.000Z",
-      },
-    ];
+    orders = getStoredOrders();
   }
 
   if (lowStockItems.length === 0) {

@@ -17,6 +17,7 @@ import {
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 import { formatPrice } from "@/lib/store-config";
 import OrderControlPanel from "./OrderControlPanel";
+import { getStoredOrderById } from "@/lib/order-store";
 
 async function getOrder(id) {
   try {
@@ -36,6 +37,9 @@ async function getOrder(id) {
   } catch {
     // fallback below
   }
+
+  const stored = getStoredOrderById(id);
+  if (stored) return stored;
 
   // Fallback demo order
   return {

@@ -15,21 +15,23 @@ export function generateStaticParams() {
 async function getProduct(slug) {
   try {
     const supabase = await getSupabaseServer();
-    const { data: product, error } = await supabase
-      .from("products")
-      .select(`
-        *,
-        brand:brands(id, name, slug),
-        category:categories(id, name, slug),
-        images:product_images(id, url, alt_text, is_primary, sort_order),
-        variants:product_variants(id, name, sku, size, color, color_hex, stock_quantity, is_active, sort_order)
-      `)
-      .eq("slug", slug)
-      .eq("is_active", true)
-      .single();
+    if (supabase) {
+      const { data: product, error } = await supabase
+        .from("products")
+        .select(`
+          *,
+          brand:brands(id, name, slug),
+          category:categories(id, name, slug),
+          images:product_images(id, url, alt_text, is_primary, sort_order),
+          variants:product_variants(id, name, sku, size, color, color_hex, stock_quantity, is_active, sort_order)
+        `)
+        .eq("slug", slug)
+        .eq("is_active", true)
+        .single();
 
-    if (!error && product) {
-      return product;
+      if (!error && product) {
+        return product;
+      }
     }
   } catch (err) {
     // fallback below
@@ -41,20 +43,22 @@ async function getProduct(slug) {
 async function getRelatedProducts(categoryId, brandId, currentId) {
   try {
     const supabase = await getSupabaseServer();
-    const { data, error } = await supabase
-      .from("products")
-      .select(`
-        *,
-        brand:brands(name, slug),
-        images:product_images(id, url, alt_text, is_primary, sort_order),
-        variants:product_variants(id, size, color, color_hex, stock_quantity, is_active)
-      `)
-      .eq("is_active", true)
-      .neq("id", currentId)
-      .or(`category_id.eq.${categoryId},brand_id.eq.${brandId}`)
-      .limit(4);
+    if (supabase) {
+      const { data, error } = await supabase
+        .from("products")
+        .select(`
+          *,
+          brand:brands(name, slug),
+          images:product_images(id, url, alt_text, is_primary, sort_order),
+          variants:product_variants(id, size, color, color_hex, stock_quantity, is_active)
+        `)
+        .eq("is_active", true)
+        .neq("id", currentId)
+        .or(`category_id.eq.${categoryId},brand_id.eq.${brandId}`)
+        .limit(4);
 
-    if (!error && data && data.length > 0) return data;
+      if (!error && data && data.length > 0) return data;
+    }
   } catch (err) {
     // fallback below
   }

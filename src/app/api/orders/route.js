@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 import { storeConfig } from "@/lib/store-config";
 import { PRODUCTS } from "@/lib/catalog-data";
+import { addStoredOrder } from "@/lib/order-store";
 
 // Validation Schema for checkout
 const orderSchema = z.object({
@@ -217,6 +218,27 @@ export async function POST(request) {
         console.error("Database order insertion error (falling back to memory):", dbError);
       }
     }
+
+    // Save order in unified store so admin panel immediately sees it
+    addStoredOrder({
+      id: dbOrderId || orderNumber,
+      order_number: orderNumber,
+      customer_name: orderData.customer_name,
+      customer_phone: orderData.customer_phone,
+      customer_email: orderData.customer_email || null,
+      shipping_address: orderData.shipping_address,
+      city: orderData.city,
+      state: orderData.state,
+      pin_code: orderData.pin_code,
+      delivery_instructions: orderData.delivery_instructions || null,
+      subtotal,
+      shipping_charge: shippingCharge,
+      total,
+      order_status: "pending",
+      payment_method: "cod",
+      payment_status: "unpaid",
+      items: processedItems,
+    });
 
     return NextResponse.json({
       success: true,

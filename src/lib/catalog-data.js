@@ -437,6 +437,189 @@ export const PRODUCTS = [
       { id: "img12-1", url: "https://images.unsplash.com/photo-1542272604-780c96856592?auto=format&fit=crop&w=1000&q=80", alt_text: "DSG Knee Guard Pro", is_primary: true }
     ],
     variants: []
+  },
+  {
+    id: "p13",
+    name: "Raida Tourer Adventure Pants",
+    slug: "raida-tourer-adventure-pants",
+    brand_id: "b4",
+    brand: { name: "Raida", slug: "raida" },
+    category_id: "c4",
+    category: { name: "Pants", slug: "pants" },
+    description: "Multi-climate adventure touring riding pants crafted from 600D polyester with CE Level 2 armors at knees. Features massive zippered intake mesh vents for cross-country rides.",
+    base_price: 5499,
+    sale_price: 4999,
+    sku: "RDA-TR-PNT",
+    is_active: true,
+    is_featured: false,
+    is_new_arrival: true,
+    has_variants: true,
+    stock_quantity: 18,
+    specifications: {
+      "Chassis": "600D Ballistic Cordura with stretch panels",
+      "Knee Armor": "CE Level 2 Safe-Tech Armor",
+      "Hip Protection": "CE Level 1 Soft EVA Pads",
+      "Waterproofing": "Removable thermal & waterproof dual liner"
+    },
+    images: [
+      { id: "img13-1", url: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1000&q=80", alt_text: "Raida Tourer Adventure Pants", is_primary: true }
+    ],
+    variants: [
+      { id: "v13-1", name: "30", sku: "RDA-TR-30", size: "30", stock_quantity: 4, is_active: true },
+      { id: "v13-2", name: "32", sku: "RDA-TR-32", size: "32", stock_quantity: 6, is_active: true },
+      { id: "v13-3", name: "34", sku: "RDA-TR-34", size: "34", stock_quantity: 5, is_active: true },
+      { id: "v13-4", name: "36", sku: "RDA-TR-36", size: "36", stock_quantity: 3, is_active: true }
+    ]
+  },
+  {
+    id: "p14",
+    name: "Raida Explorer WP Adventure Boots",
+    slug: "raida-explorer-wp-adventure-boots",
+    brand_id: "b4",
+    brand: { name: "Raida", slug: "raida" },
+    category_id: "c5",
+    category: { name: "Boots", slug: "boots" },
+    description: "Rugged mid-calf touring and adventure boots built with water-resistant full-grain leather, dual buckle ratchets, steel shank sole reinforcement, and molded shin protectors.",
+    base_price: 7999,
+    sale_price: 7499,
+    sku: "RDA-EXP-BT",
+    is_active: true,
+    is_featured: false,
+    is_new_arrival: true,
+    has_variants: true,
+    stock_quantity: 14,
+    specifications: {
+      "Leather": "Hydrophobic full-grain microfibre leather",
+      "Buckles": "Replaceable dual cam-lock ratchets",
+      "Shin & Ankle": "Molded TPU contoured shin and malleolus guard",
+      "Sole": "Multi-density deep lug compound for off-road pegs"
+    },
+    images: [
+      { id: "img14-1", url: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=1000&q=80", alt_text: "Raida Explorer WP Adventure Boots", is_primary: true }
+    ],
+    variants: [
+      { id: "v14-1", name: "UK 7 / EU 41", sku: "RDA-EXP-41", size: "UK 7 / EU 41", stock_quantity: 3, is_active: true },
+      { id: "v14-2", name: "UK 8 / EU 42", sku: "RDA-EXP-42", size: "UK 8 / EU 42", stock_quantity: 4, is_active: true },
+      { id: "v14-3", name: "UK 9 / EU 43", sku: "RDA-EXP-43", size: "UK 9 / EU 43", stock_quantity: 4, is_active: true },
+      { id: "v14-4", name: "UK 10 / EU 44", sku: "RDA-EXP-44", size: "UK 10 / EU 44", stock_quantity: 3, is_active: true }
+    ]
+  },
+  {
+    id: "p15",
+    name: "Viaterra Oxus Magnetic Tank Bag",
+    slug: "viaterra-oxus-magnetic-tank-bag",
+    brand_id: "b6",
+    brand: { name: "Viaterra", slug: "viaterra" },
+    category_id: "c6",
+    category: { name: "Luggage", slug: "luggage" },
+    description: "Compact 14L magnetic tank bag engineered specifically for Indian metal tank motorcycles. Features powerful rare-earth magnets, transparent touch-sensitive phone navigator pocket, and high-viz rain cover.",
+    base_price: 2899,
+    sale_price: null,
+    sku: "VIA-OXUS-14",
+    is_active: true,
+    is_featured: false,
+    is_new_arrival: false,
+    has_variants: false,
+    stock_quantity: 12,
+    specifications: {
+      "Capacity": "14 Litres",
+      "Magnets": "4 Super strong neodymium earth magnets",
+      "Phone Pocket": "Fits screens up to 6.7 inches with sun visor",
+      "Rain Cover": "100% waterproof fluorescent cover included"
+    },
+    images: [
+      { id: "img15-1", url: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=80", alt_text: "Viaterra Oxus Magnetic Tank Bag", is_primary: true }
+    ],
+    variants: []
+  },
+  {
+    id: "p16",
+    name: "Rynox Nomad V2 Saddlebags",
+    slug: "rynox-nomad-v2-saddlebags",
+    brand_id: "b1",
+    brand: { name: "Rynox", slug: "rynox" },
+    category_id: "c6",
+    category: { name: "Luggage", slug: "luggage" },
+    description: "Heavy-duty 64L pair of universal motorcycle saddlebags with fiberglass reinforced structural shape retention, thermal exhaust shields, and roll-top 100% waterproof inner drybags.",
+    base_price: 6499,
+    sale_price: 5999,
+    sku: "RNX-NMD-64",
+    is_active: true,
+    is_featured: false,
+    is_new_arrival: true,
+    has_variants: false,
+    stock_quantity: 8,
+    specifications: {
+      "Total Volume": "64 Litres combined (32L per side)",
+      "Material": "1000D Cordura reinforced base",
+      "Heat Shield": "Fire-retardant silicone coated exhaust base",
+      "Mounting": "Heavy-duty cross-seat velcro bridging straps"
+    },
+    images: [
+      { id: "img16-1", url: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80", alt_text: "Rynox Nomad V2 Saddlebags", is_primary: true }
+    ],
+    variants: []
+  },
+  {
+    id: "p17",
+    name: "Raida Rain Pro Waterproof Over-Suit",
+    slug: "raida-rain-pro-waterproof-suit",
+    brand_id: "b4",
+    brand: { name: "Raida", slug: "raida" },
+    category_id: "c7",
+    category: { name: "Accessories", slug: "accessories" },
+    description: "High performance two-piece motorcycle rain suit engineered to wear over armored riding jackets and pants. Rated up to 10,000mm water column with heat-taped seams and high-visibility neon accents.",
+    base_price: 1999,
+    sale_price: 1799,
+    sku: "RDA-RN-PRO",
+    is_active: true,
+    is_featured: false,
+    is_new_arrival: false,
+    has_variants: true,
+    stock_quantity: 22,
+    specifications: {
+      "Waterproof Rating": "10,000mm hydrostatic head",
+      "Seams": "100% Hot air taped sealed seams",
+      "Reflectives": "3M Scotchlite high-intensity reflective piping",
+      "Fitment": "Sized generously to fit directly over riding armor"
+    },
+    images: [
+      { id: "img17-1", url: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1000&q=80", alt_text: "Raida Rain Pro Waterproof Suit", is_primary: true }
+    ],
+    variants: [
+      { id: "v17-1", name: "M", sku: "RDA-RN-M", size: "M", stock_quantity: 6, is_active: true },
+      { id: "v17-2", name: "L", sku: "RDA-RN-L", size: "L", stock_quantity: 8, is_active: true },
+      { id: "v17-3", name: "XL", sku: "RDA-RN-XL", size: "XL", stock_quantity: 5, is_active: true },
+      { id: "v17-4", name: "XXL", sku: "RDA-RN-XXL", size: "XXL", stock_quantity: 3, is_active: true }
+    ]
+  },
+  {
+    id: "p18",
+    name: "Mototech Coolmax Riding Balaclava",
+    slug: "mototech-coolmax-riding-balaclava",
+    brand_id: "b7",
+    brand: { name: "Mototech", slug: "mototech" },
+    category_id: "c7",
+    category: { name: "Accessories", slug: "accessories" },
+    description: "Moisture-wicking Coolmax tactical headliner designed to wear under motorcycle helmets. Prevents sweat accumulation on helmet cheek pads, shields neck from sunburn and highway dust.",
+    base_price: 699,
+    sale_price: 599,
+    sku: "MTK-CLM-BAL",
+    is_active: true,
+    is_featured: false,
+    is_new_arrival: false,
+    has_variants: false,
+    stock_quantity: 35,
+    specifications: {
+      "Fabric": "Dupont Coolmax 4-way stretch micro-mesh",
+      "UV Protection": "UPF 50+ Sun ultraviolet protection",
+      "Stitching": "Flat-lock anti-chafing seams",
+      "Fit": "One size fits all universal ergonomic contour"
+    },
+    images: [
+      { id: "img18-1", url: "https://images.unsplash.com/photo-1545291730-faff8ca1d4b0?auto=format&fit=crop&w=1000&q=80", alt_text: "Mototech Coolmax Riding Balaclava", is_primary: true }
+    ],
+    variants: []
   }
 ];
 

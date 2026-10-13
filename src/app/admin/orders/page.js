@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 import { formatPrice } from "@/lib/store-config";
+import { getStoredOrders } from "@/lib/order-store";
 
 async function getOrders(statusFilter, searchQuery) {
   let orders = [];
@@ -40,84 +41,27 @@ async function getOrders(statusFilter, searchQuery) {
       }
 
       const { data, error } = await query;
-      if (!error && data) orders = data;
+      if (!error && data && data.length > 0) orders = data;
     }
   } catch {
     // fallback below
   }
 
-  // Fallback demo orders if database empty
+  // Fallback to local persistent order store
   if (orders.length === 0) {
-    orders = [
-      {
-        id: "demo-1",
-        order_number: "RH-2026-8812",
-        customer_name: "Bikash Kalita",
-        customer_phone: "9864012345",
-        city: "Bongaigaon",
-        state: "Assam",
-        total: 12999,
-        order_status: "pending",
-        payment_status: "unpaid",
-        items_count: 1,
-        created_at: new Date().toISOString(),
-      },
-      {
-        id: "demo-2",
-        order_number: "RH-2026-7491",
-        customer_name: "Amitava Das",
-        customer_phone: "9435098765",
-        city: "Guwahati",
-        state: "Assam",
-        total: 7999,
-        order_status: "confirmed",
-        payment_status: "unpaid",
-        items_count: 1,
-        created_at: new Date(Date.now() - 3600000 * 12).toISOString(),
-      },
-      {
-        id: "demo-3",
-        order_number: "RH-2026-6102",
-        customer_name: "Rupam Barman",
-        customer_phone: "9706123987",
-        city: "Kokrajhar",
-        state: "Assam",
-        total: 4499,
-        order_status: "shipped",
-        payment_status: "unpaid",
-        items_count: 2,
-        created_at: new Date(Date.now() - 3600000 * 36).toISOString(),
-      },
-      {
-        id: "demo-4",
-        order_number: "RH-2026-5019",
-        customer_name: "Manash Jyoti",
-        customer_phone: "8876543210",
-        city: "Tezpur",
-        state: "Assam",
-        total: 3999,
-        order_status: "delivered",
-        payment_status: "paid",
-        items_count: 1,
-        created_at: new Date(Date.now() - 3600000 * 72).toISOString(),
-      },
-      {
-        id: "demo-5",
-        order_number: "RH-2026-4190",
-        customer_name: "Prakash Roy",
-        customer_phone: "9101234567",
-        city: "Dhubri",
-        state: "Assam",
-        total: 5999,
-        order_status: "cancelled",
-        payment_status: "unpaid",
-        items_count: 1,
-        created_at: new Date(Date.now() - 3600000 * 96).toISOString(),
-      },
-    ];
+    orders = getStoredOrders();
 
     if (statusFilter && statusFilter !== "all") {
       orders = orders.filter((o) => o.order_status === statusFilter);
+    }
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      orders = orders.filter(
+        (o) =>
+          o.order_number?.toLowerCase().includes(q) ||
+          o.customer_name?.toLowerCase().includes(q) ||
+          o.customer_phone?.toLowerCase().includes(q)
+      );
     }
   }
 

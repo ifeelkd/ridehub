@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
+import { updateStoredOrderStatus } from "@/lib/order-store";
 
 export async function PATCH(request, { params }) {
   try {
@@ -9,6 +10,7 @@ export async function PATCH(request, { params }) {
 
     const supabase = getSupabaseAdmin();
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+      updateStoredOrderStatus(id, { order_status, payment_status });
       return NextResponse.json({ success: true, message: "Updated in demo mode" });
     }
 
