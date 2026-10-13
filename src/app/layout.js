@@ -21,6 +21,14 @@ export const metadata = {
   title: storeConfig.seo.defaultTitle,
   description: storeConfig.seo.defaultDescription,
   metadataBase: new URL(storeConfig.seo.siteUrl),
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: storeConfig.seo.defaultTitle,
     description: storeConfig.seo.defaultDescription,

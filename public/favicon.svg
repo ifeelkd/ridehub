@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="50%" stop-color="#0c0a09" />
+      <stop offset="100%" stop-color="#18181b" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#d6d3d1" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#ea580c" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Base Dark Tile -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  <rect width="492" height="492" x="10" y="10" rx="102" fill="none" stroke="url(#accentGrad)" stroke-width="10" stroke-opacity="0.85" />
+
+  <!-- Speed Dash Elements in background -->
+  <path d="M70 140 L130 140" stroke="#ea580c" stroke-width="8" stroke-linecap="round" opacity="0.4" />
+  <path d="M50 170 L100 170" stroke="#ea580c" stroke-width="6" stroke-linecap="round" opacity="0.3" />
+
+  <!-- Helmet Silhouette Group -->
+  <g filter="url(#shadow)">
+    <!-- Helmet Outer Shell (Profile facing right) -->
+    <path
+      d="M150 270 C140 175 210 115 315 115 C415 115 445 180 445 255 C445 325 420 375 375 396 C335 415 270 415 225 410 C185 405 155 365 150 270 Z"
+      fill="url(#accentGrad)"
+    />
+
+    <!-- Chin bar and lower jaw shadow -->
+    <path
+      d="M150 270 C165 340 200 395 240 405 L300 408 L360 395 C330 380 280 370 230 365 C185 360 160 320 150 270 Z"
+      fill="#0c0a09"
+      opacity="0.35"
+    />
+
+    <!-- Visor Opening Background (Dark) -->
+    <path
+      d="M210 195 C250 180 345 180 395 215 C410 230 415 260 405 292 C375 315 295 325 220 308 C192 300 188 275 192 245 C195 220 200 205 210 195 Z"
+      fill="#09090b"
+    />
+
+    <!-- Visor Glass with Gradient -->
+    <path
+      d="M216 202 C252 188 340 188 388 220 C398 232 402 254 394 280 C368 298 298 308 230 294 C205 288 200 268 203 242 C206 222 210 210 216 202 Z"
+      fill="url(#visorGrad)"
+    />
+
+    <!-- Visor Reflection Highlight -->
+    <path
+      d="M225 210 C258 198 335 198 375 224 C350 236 300 244 240 240 C222 238 220 222 225 210 Z"
+      fill="url(#metalGrad)"
+      opacity="0.8"
+    />
+
+    <!-- Visor Top Glare Spark -->
+    <path
+      d="M248 214 C275 206 320 206 348 218 C332 222 300 225 260 223 Z"
+      fill="#ffffff"
+      opacity="0.9"
+    />
+
+    <!-- Helmet Top Aero Fin / Spoiler -->
+    <path
+      d="M260 135 C310 135 360 148 390 170 L372 180 C345 162 300 152 260 152 Z"
+      fill="#ffffff"
+      opacity="0.85"
+    />
+
+    <!-- Lower Chin Vent Grille -->
+    <line x1="330" y1="360" x2="360" y2="350" stroke="#09090b" stroke-width="4" stroke-linecap="round" />
+    <line x1="325" y1="370" x2="355" y2="360" stroke="#09090b" stroke-width="4" stroke-linecap="round" />
+  </g>
+</svg>
