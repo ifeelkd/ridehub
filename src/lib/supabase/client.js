@@ -1,0 +1,16 @@
+import { createBrowserClient } from "@supabase/ssr";
+
+let client = null;
+
+/**
+ * Supabase client for browser/client components.
+ * Uses the public anon key — safe to expose.
+ */
+export function getSupabaseBrowser() {
+  if (client) return client;
+  client = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
+  return client;
+}
